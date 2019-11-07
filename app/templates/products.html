@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id = "categoriesList" class = "productList mt-2">
+	<div class="container border bg-light py-2">
+		{% set path_list =  category.GetFullPath() %}
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="{{ url_for('main.ShowProducts') }}">Товары</a></li>
+				{% for path in path_list[:-1] %}
+					<li class="breadcrumb-item"><a href="{{ url_for('main.ShowProducts', cat_id = path['id']) }}">{{ path['name'] }}</a></li>
+				{% endfor %}
+				{% if path_list|length > 0 %}
+					<li class="breadcrumb-item active" aria-current="page">{{ path_list[-1]['name'] }}</li>
+				{% endif %}
+			</ol>
+		</nav>
+		{% set cat_list = category.children %}
+		{% if cat_list | length > 0 %}
+		<ul class="nav">
+			{% for cat in category.children %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('main.ShowProducts', cat_id = cat.id) }}">{{ cat.name }}</a>
+				</li>	
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+</section>
+{% if products|length > 0 %}
+<section id = "productList" class = "productList mt-2">
+	<div class="container border bg-light py-2">
+		{% for product in products %}
+			<div class="row mb-2 border-bottom">
+				<div class="col-sm overflow-hidden">
+					{{ product.title }}
+				</div>
+				<div class="col-sm overflow-hidden">
+					<span class="d-sm-none font-weight-bold">Артикул: </span>{{ product.sku }}
+				</div>
+				<div class="col-sm overflow-hidden">
+					{{ product.description }}
+				</div>
+				<div class="col-sm overflow-hidden">
+					<form class="updateProductPriceForm form-inline">
+						{{ form.id(class_ = 'd-none', hidden='',value = product.id) }}
+						{{ form.csrf_token }}
+						{{ form.price.label(class_ = 'd-sm-none font-weight-bold mb-0') }}
+						{{ form.price(class_ = 'productPrice form-control-plaintext text-primary', value = product.price) }}
+					</form>
+				</div>	
+				<div class="col-auto mb-2 overflow-hidden">
+				{% if product.picture!=None %}
+					<img src="{{ product.picture }}" height="64" width="64" alt="thumbnail">
+				{% endif %}
+				</div>				
+			</div>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+$(function(){
+	var options = {
+		success:	ShowAjaxFlashes,
+		url: "{{ url_for('main.UpdateProductPrice') }}",
+		dataType:	'json',
+		method: 'POST',
+		clearForm: false
+	};
+	$('.updateProductPriceForm').ajaxForm(options);
+	$('.productPrice').focus(function() {
+		$(this).removeClass('form-control-plaintext');
+		$(this).addClass ('form-control')
+	});
+	$('.productPrice').focusout(function() {
+		$(this).parent().submit();
+		$(this).removeClass('form-control');
+		$(this).addClass ('form-control-plaintext')
+	});
+});
+</script>
+{% endblock %}

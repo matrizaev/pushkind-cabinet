@@ -1,0 +1,85 @@
+2019-10-08 06:48:26,901 ERROR: Exception on /update_price/ [POST] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1944, in add
+    state = attributes.instance_state(instance)
+AttributeError: 'BaseQuery' object has no attribute '_sa_instance_state'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/matrizaev/cabinet/app/routes.py", line 142, in UpdateProductPrice
+    db.session.add(product)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1946, in add
+    raise exc.UnmappedInstanceError(instance)
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'flask_sqlalchemy.BaseQuery' is not mapped
+2019-10-08 06:48:41,813 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-08 06:48:45,993 ERROR: Exception on /update_price/ [POST] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/matrizaev/cabinet/app/routes.py", line 140, in UpdateProductPrice
+    raise UpdatePriceException()
+app.routes.UpdatePriceException
+2019-10-08 06:49:21,665 ERROR: Exception on /update_price/ [POST] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/matrizaev/cabinet/app/routes.py", line 140, in UpdateProductPrice
+    raise UpdatePriceException()
+app.routes.UpdatePriceException
+2019-10-08 06:50:06,748 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-08 06:52:30,093 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-08 07:08:41,503 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-08 07:21:52,948 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 12:32:53,333 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 12:42:40,431 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 12:44:02,758 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:22:41,456 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:25:07,178 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:30:28,125 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:31:43,730 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:34:28,348 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:39:43,158 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 13:45:54,788 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 14:13:25,648 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-09 14:25:58,695 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]

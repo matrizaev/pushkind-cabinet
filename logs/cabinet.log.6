@@ -1,0 +1,93 @@
+2019-10-09 14:54:08,482 ERROR: Exception on /settings/ [POST] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1229, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 549, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/matrizaev/cabinet/app/routes.py", line 54, in ShowSettings
+    df.to_sql(name = 'product', con = db.engine, if_exists = 'append', index = False)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/pandas/core/generic.py", line 2712, in to_sql
+    method=method,
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/pandas/io/sql.py", line 518, in to_sql
+    method=method,
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/pandas/io/sql.py", line 1320, in to_sql
+    table.insert(chunksize, method=method)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/pandas/io/sql.py", line 756, in insert
+    exec_insert(conn, keys, chunk_iter)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/pandas/io/sql.py", line 670, in _execute_insert
+    conn.execute(self.table.insert(), data)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1253, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1229, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 549, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO product (sku, path, title, price, description, store_id, cat_id) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: (('a5600562f3196e145c380f449602076e', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура (немерная)', 'Арматура (немерная) d 25 25Г2С', 42190.0, 'ГОСТ 5781-82 База: Доставка в Брянск', 4, 1492), ('38c7e6f891d7f7e422e3aa56ae206210', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура (немерная)', 'Арматура (немерная) d  6 А240С', 42100.0, 'ГОСТ 34028-2016 База: Доставка в Брянск', 4, 1492), ('700bf0939f8880603c0eb203e195ebf1', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура (немерная)', 'Арматура (немерная) d  6 А500С', 44000.0, 'ГОСТ 34028-2016 База: Брянск', 4, 1492), ('c6f959a64d3cf4c07226241131367f4c', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура (немерная)', 'Арматура (немерная) d  8 А500С', 40200.0, 'ГОСТ 34028-2016 База: Брянск', 4, 1492), ('9594786de5f03298c63b6bdab2f5d33e', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура А1 (гладкая)', 'Арматура А1 (гладкая) d  8 3пс сп', 43100.0, 'ГОСТ 5781-82 База: Брянск', 4, 1492), ('a4c6a45c0c4fa7118bf870f5e7b77e1e', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура А1 (гладкая)', 'Арматура А1 (гладкая) d 20 3пс сп', 39700.0, 'ГОСТ 5781-82 База: Брянск', 4, 1492), ('fc076c2fe9613163e520108af4659f1c', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура А1 (гладкая)', 'Арматура А1 (гладкая) d  8 А240', 41300.0, 'ТУ 14-1-5473-03 База: Доставка в Брянск', 4, 1492), ('6b97ec9a07e744920ffde7c4b2494125', 'Брянск/agrupp/Арматурный прокат, катанка/Арматура А1 (гладкая)', 'Арматура А1 (гладкая) d 18 3пс сп', 40400.0, 'ГОСТ 5781-82 База: Брянск', 4, 1492)  ... displaying 10 of 15295 total bound parameter sets ...  ('0e2283f60d0f5b3abc22bcdc1666f9b0', 'Якутск/agrupp/Трубы профильные/Труба профильная г к', 'Труба профильная г к 50х 25х 2 1-3сп пс', 62000.0, 'ГОСТ 8645-68 База: Якутск', 4, 1492), ('b256f3e5e9b724ed1ec5f3a71c74e073', 'Якутск/agrupp/Трубы профильные/Труба профильная г к', 'Труба профильная г к 60х 40х 2 1-3сп пс', 58000.0, 'ГОСТ 8645-68 База: Якутск', 4, 1492))]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-10-10 06:18:49,040 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 06:33:48,684 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 06:56:55,848 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 07:40:45,984 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 07:44:40,732 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 07:50:08,261 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 08:01:07,850 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 08:04:49,115 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:53]
+2019-10-10 08:05:05,360 INFO: Cabinet startup [in ./app/__init__.py:53]
+2019-10-10 08:46:23,490 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:56]
+2019-10-10 09:37:25,045 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:69]
+2019-10-10 09:38:16,213 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:69]
+2019-10-10 09:51:14,109 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:69]
+2019-10-10 09:54:12,098 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:69]
+2019-10-10 09:58:21,579 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:69]
+2019-10-10 09:59:31,217 INFO: Cabinet startup [in ./app/__init__.py:69]
+2019-10-10 09:59:31,910 INFO: Cabinet startup [in ./app/__init__.py:69]
+2019-10-10 09:59:32,658 INFO: Cabinet startup [in ./app/__init__.py:69]
+2019-10-10 11:00:46,189 INFO: Cabinet startup [in ./app/__init__.py:69]
+2019-10-10 11:01:07,731 INFO: Cabinet startup [in ./app/__init__.py:69]
+2019-10-10 11:49:42,541 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:49:54,098 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:50:44,701 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:53:45,103 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:53:58,630 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:54:11,892 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:54:56,564 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:55:42,872 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:55:52,707 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 11:56:19,935 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 12:28:47,571 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 12:29:44,734 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 12:31:23,570 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 12:31:32,175 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="my-2">
+	<div class="container border bg-light py-2">
+	
+		<h6 class = "text-secondary text-right"><a href="http://cabinet.pushkind.com/static/products.xlsx">Шаблон файла товаров</a></h6>
+		<div class = "row">
+			<div class="col">
+				{% set errorsList = form.products.errors %}
+				{% if errorsList|length > 0 %}
+					<div class="alert alert-danger" role="alert">
+						{% for error in  errorsList %}
+							{{ error }}<br>
+						{% endfor %}
+					</div>
+				{% endif %}
+					<div class="alert alert-info d-none" role="alert" id="progressReport">
+					</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm">
+				<form method="POST"  enctype="multipart/form-data" id="UploadProductsForm">
+					{{ form.csrf_token }}
+					Продукты: 
+					<label for="products">
+						<span class="btn btn-warning mb-1">
+							<img class="octicon" src="http://cabinet.pushkind.com/static/octicons/cloud-upload.svg" alt="upload">
+						</span>
+					</label>
+					<input id="products" type="file" name="products" class="d-none">
+				</form>
+			</div>
+			<div class="col-sm">
+				Опубликовать:
+				{% if current_user.want_to_publish == '' %}
+					<button id="publishProducts" class="btn btn-info mb-1">
+						<img class="octicon" src="http://cabinet.pushkind.com/static/octicons/eye-closed.svg" alt="publish">
+					</button>
+				{% elif  current_user.want_to_publish == 'publish' %}
+					<button id="publishProducts" class="btn btn-warning mb-1">
+						<img class="octicon" src="http://cabinet.pushkind.com/static/octicons/eye-closed.svg" alt="publish">
+					</button>
+				{% elif  current_user.want_to_publish == 'published' %}
+					<button id="publishProducts" class="btn btn-success mb-1">
+						<img class="octicon" src="http://cabinet.pushkind.com/static/octicons/eye.svg" alt="publish">
+					</button>
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+<script>
+	function GetUploadProgress()
+	{
+		$.get( "{{ url_for('main.GetUploadProgress') }}", function( data )
+		{
+			var progressBar = $('#progressReport');
+			if (data.status == true)
+			{
+				progressBar.removeClass("d-none");
+				data.flash.forEach(function(element) {
+				progressBar.html(element + '<br>');
+				});
+			}
+			else
+			{
+				progressBar.addClass("d-none");
+				if (window.getUploadProgressTimer != -1)
+					clearInterval(window.getUploadProgressTimer);
+					window.getUploadProgressTimer = -1;
+			};
+		});
+	};
+	$(function(){
+		window.getUploadProgressTimer = -1;
+		GetUploadProgress();
+		window.getUploadProgressTimer = setInterval(GetUploadProgress, 5000);
+	});
+	$('#products').on('change',function(){
+		$('#UploadProductsForm').submit();
+	})
+	$('#publishProducts').on('click',function(){
+		$.post( "{{ url_for('main.PusblishProducts') }}", ShowAjaxFlashes);
+		$(this).removeClass("btn-info btn-success");
+		$(this).addClass("btn-info btn-warning");
+		$(this).children("img").attr("src", "http://cabinet.pushkind.com/static/octicons/eye-closed.svg")
+	})
+</script>
+
+{% endblock %}

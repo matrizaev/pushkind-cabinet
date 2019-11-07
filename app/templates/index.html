@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id = "storeInfo" class = "storeInfo mt-2">
+	<div class = "container border bg-light text-center">
+		<h6 class="text-secondary text-right">Информация</h6>
+		<div class="row border-bottom mb-2">
+			<div class="col-3 overflow-hidden">
+				<h6>
+					Пользователь
+				</h6>
+			</div>
+			<div class="col-3 overflow-hidden">
+				<h6>
+					Идентификатор поставщика
+				</h6>
+			</div>
+			<div class="col-3 overflow-hidden">
+				<h6>
+					Количество товаров
+				</h6>
+			</div>
+			<div class="col-3 overflow-hidden">
+				<h6>
+					Количество заказов
+				</h6>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<div class="col-3 overflow-hidden">
+				<img src="{{ current_user.GetAvatar(32) }}" alt="avatar">
+				{{current_user.email}}
+			</div>
+			<div class="col-3 overflow-hidden">
+				{{ current_user.vendor_id }}
+			</div>
+			<div class="col-3 overflow-hidden">
+				{{current_user.products.count()}}
+			</div>
+			<div class="col-3 overflow-hidden">
+				{{current_user.orders.count()}}
+			</div>
+		</div>
+	</div>
+</section>
+<section id = "orderList" class = "orderList mt-2">
+	{% for order in orders %}
+		{% include '_order.html' %}
+	{% endfor %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.locale(auto_detect=True) }}
+{% endblock %}

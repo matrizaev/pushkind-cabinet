@@ -1,0 +1,76 @@
+<div class = "container border bg-light  mb-2">
+	<h6 class="text-secondary text-right">Заказ №{{ order.id }} от {{ moment(order.timestamp).format('LLL') }}</h6>
+	<form action="{{ url_for('main.RemoveOrder') }}" method="post" id="removeOrderForm" class="removeOrderForm">
+		<div class="form-group row">
+			<div class="col-sm text-right">
+				{{ removeOrderForm.csrf_token }}
+				{{ removeOrderForm.id(class_ = 'd-none', hidden='', value=order.id) }}
+				<button type="submit" class="btn btn-danger"><img class="octicon" src="http://cabinet.pushkind.com/static/octicons/x.svg"></button>
+			</div>
+		</div>
+	</form>
+	<div class="row mb-2 border-bottom">
+		<div class="col-sm overflow-hidden">
+			<h6>
+				{{ order.name }}
+			</h6>
+		</div>
+		<div class="col-sm overflow-hidden">
+			<h6>
+				{{ order.postal_code }}, {{ order.country }}, {{ order.province }}, {{ order.city }}, {{ order.address }}
+			</h6>
+		</div>
+		<div class="col-sm overflow-hidden">
+			<h6>
+				{{ order.phone }}
+			</h6>
+		</div>
+		<div class="col-sm overflow-hidden">
+			<h6>
+				{{ order.email }}
+			</h6>
+		</div>
+		<div class="col-sm overflow-hidden">
+			<h6>
+				{{ order.comment }}
+			</h6>
+		</div>
+	</div>
+	<div class="row mb-2 border-bottom">
+		<div class="col-sm overflow-hidden text-right">
+			<h6>
+				Итоговая сумма: {{ order.GetOrderPrice() }}
+			</h6>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h6 class="panel-title">
+				<a data-toggle="collapse" href="#products{{ order.id }}">Список товаров</a>
+			</h6>
+		</div>
+		<div class="panel-collapse collapse" id="products{{ order.id }}">
+			{% for product in order.products %}
+				<div class="row mb-2 border-bottom">
+					<div class="col-sm overflow-hidden">
+						{{ product.title }}
+					</div>
+					<div class="col-sm text-info overflow-hidden">
+						<span class="d-sm-none">Артикул: </span>{{ product.sku }}
+					</div>	
+					<div class="col-sm overflow-hidden">
+						<span class="d-sm-none">Количество: </span>{{ product.count }}
+					</div>	
+					<div class="col-sm text-info overflow-hidden">
+						Цена: {{ product.price }}
+					</div>	
+					<div class="col-auto mb-2 overflow-hidden">
+						<img src="{{ product.picture if product.picture!=None else 'http://84.201.139.143/static/octicons/file-media.svg' }}" height="64" width="64" alt="thumbnail">
+					</div>				
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+

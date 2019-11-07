@@ -1,0 +1,119 @@
+2019-10-10 12:33:49,350 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:03:14,654 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:03:25,927 ERROR: Exception on /upload_progress/ [GET] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/matrizaev/cabinet/app/main/routes.py", line 66, in GetUploadProgress
+    return jsonify({'status':True, 'flash': 'Прогресс обработки товаров: {}%'.format(current_user.GetRQprogress())})
+  File "/home/matrizaev/cabinet/app/models.py", line 65, in GetRQprogress
+    job = self.GetRQjob()
+  File "/home/matrizaev/cabinet/app/models.py", line 59, in GetRQjob
+    rq_job = rq.job.Job.fetch(self.task_id, connection=current_app.redis)
+NameError: name 'current_app' is not defined
+2019-10-10 13:05:11,430 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:06:21,967 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:07:44,683 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:12:00,488 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:12:45,994 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:12:57,105 INFO: Cabinet startup [in ./app/__init__.py:73]
+2019-10-10 13:13:34,492 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:17:55,668 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-10 13:19:08,760 INFO: Cabinet startup [in ./app/__init__.py:73]
+2019-10-10 13:27:55,334 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 08:32:32,171 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 08:43:09,980 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 08:49:01,189 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:01:39,277 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:03:24,463 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:03:43,370 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:04:58,730 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:06:57,914 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:13:09,721 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:14:25,590 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:17:41,797 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:33:35,500 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:33:50,092 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 09:46:49,282 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 11:03:27,859 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 11:03:33,204 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 11:03:38,835 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 11:03:48,949 INFO: Cabinet startup [in /home/matrizaev/cabinet/app/__init__.py:73]
+2019-10-16 11:04:05,061 ERROR: Exception on / [GET] [in /home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2361, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
+    return fn(*args, **kwargs)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 947, in _join_condition
+    % (a.description, b.description, hint)
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'order_products' and 'product'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 259, in decorated_view
+    elif not current_user.is_authenticated:
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/werkzeug/local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/werkzeug/local.py", line 307, in _get_current_object
+    return self.__local()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/home/matrizaev/cabinet/app/models.py", line 15, in load_user
+    return User.query.get(int(id))
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3248, in configure_mappers
+    mapper._post_configure_properties()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
+    prop.init()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1861, in do_init
+    self._setup_join_conditions()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1941, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2246, in __init__
+    self._determine_joins()
+  File "/home/matrizaev/cabinet/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2383, in _determine_joins
+    "specify a 'primaryjoin' expression." % self.prop
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship OrderProducts.product - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
