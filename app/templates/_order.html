@@ -51,23 +51,7 @@
 		</div>
 		<div class="panel-collapse collapse" id="products{{ order.id }}">
 			{% for product in order.products %}
-				<div class="row mb-2 border-bottom">
-					<div class="col-sm overflow-hidden">
-						{{ product.title }}
-					</div>
-					<div class="col-sm text-info overflow-hidden">
-						<span class="d-sm-none">Артикул: </span>{{ product.sku }}
-					</div>	
-					<div class="col-sm overflow-hidden">
-						<span class="d-sm-none">Количество: </span>{{ product.count }}
-					</div>	
-					<div class="col-sm text-info overflow-hidden">
-						Цена: {{ product.price }}
-					</div>	
-					<div class="col-auto mb-2 overflow-hidden">
-						<img src="{{ product.picture if product.picture!=None else 'http://84.201.139.143/static/octicons/file-media.svg' }}" height="64" width="64" alt="thumbnail">
-					</div>				
-				</div>
+				{% include '_product.html' %}
 			{% endfor %}
 		</div>
 	</div>

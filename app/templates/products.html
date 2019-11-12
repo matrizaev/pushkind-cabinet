@@ -32,30 +32,7 @@
 <section id = "productList" class = "productList mt-2">
 	<div class="container border bg-light py-2">
 		{% for product in products %}
-			<div class="row mb-2 border-bottom">
-				<div class="col-sm overflow-hidden">
-					{{ product.title }}
-				</div>
-				<div class="col-sm overflow-hidden">
-					<span class="d-sm-none font-weight-bold">Артикул: </span>{{ product.sku }}
-				</div>
-				<div class="col-sm overflow-hidden">
-					{{ product.description }}
-				</div>
-				<div class="col-sm overflow-hidden">
-					<form class="updateProductPriceForm form-inline">
-						{{ form.id(class_ = 'd-none', hidden='',value = product.id) }}
-						{{ form.csrf_token }}
-						{{ form.price.label(class_ = 'd-sm-none font-weight-bold mb-0') }}
-						{{ form.price(class_ = 'productPrice form-control-plaintext text-primary', value = product.price) }}
-					</form>
-				</div>	
-				<div class="col-auto mb-2 overflow-hidden">
-				{% if product.picture!=None %}
-					<img src="{{ product.picture }}" height="64" width="64" alt="thumbnail">
-				{% endif %}
-				</div>				
-			</div>
+			{% include '_product.html' %}
 		{% endfor %}
 	</div>
 </section>
