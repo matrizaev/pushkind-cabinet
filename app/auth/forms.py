@@ -18,11 +18,11 @@ class RegistrationForm(FlaskForm):
 	submit = SubmitField('Регистрация')
 	
 	def validate_email(self, email):
-		user = User.query.filter_by(email=self.email.data).first()
+		user = User.query.filter_by(email=email.data).first()
 		if user is not None:
 			raise ValidationError('Этот адрес электронной почты уже занят.')
 
-	def validate_vendor_id(self, email):
-		user = User.query.filter_by(vendor_id=self.vendor_id.data).first()
+	def validate_vendor_id(self, vendor_id):
+		user = User.query.filter_by(vendor_id=vendor_id.data).first()
 		if user is not None:
 			raise ValidationError('Этот индентификатор поставщика уже занят.')
