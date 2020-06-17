@@ -31,6 +31,7 @@ def PerformRegistration():
 	if form.validate_on_submit():
 		user = User(email = form.email.data, vendor_id = form.vendor_id.data)
 		user.SetPassword(form.password.data)
+		db.session.commit()
 		user.CreateRootCategory()
 		flash ('Теперь вы можете войти.')
 		return redirect(url_for('auth.PerformLogin'))
